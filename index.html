@@ -7,9 +7,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="./libraries/jquery-2.2.4.min.js"></script>
         <script src="./libraries/angular1_6_1.min.js"></script>
+        <script src="./libraries/jquery.animate-shadow-min.js"></script>
         <!--<script src="./libraries/angular-ui-router.min.js"></script>-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
+        <!--<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=OpenSans">-->
+        <!--<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Delicious">-->
+
+
+
         <script src="./libraries/bootstrap.js"></script>
         <link href="./libraries/bootstrap.min.css" rel="stylesheet" >
         <link href="./libraries/bootstrap-theme.min.css" rel="stylesheet"></link>
@@ -39,24 +46,26 @@
     
     
     
-    <body ng-app="">
-        <div class="container">
-            <h1>JS Calculator <small>Powered by Angular</small></h1>
-            <div id="calculator">
+    <body ng-app="app" ng-controller="calcCtrl as calc">
+        <div class="container" >
+            <h1>JS Calculator <small>Angular Powered</small></h1>
+            <div id="calculator" >
+                <input dir="rtl" value="{{calc.textbox}}"></input>
                 <div>
+                <!--ng-keypress="vm.textbox += '7'"-->
                     <span>7</span>
                     <span>8</span>
                     <span>9</span>
-                    <span>/</span>
-                    <span>del</span>
+                    <span>C</span>
+                    <span><<i class="material-icons backward">keyboard_backspace</i></span>
                 </div>
                 
                 <div>
                     <span>4</span>
                     <span>5</span>
                     <span>6</span>
-                    <span>*</span>
-                    <span>C</span>
+                    <span class="multi">*</span>
+                    <span>/</span>
                 </div>
                 
                 <div>
@@ -64,21 +73,44 @@
                     <span>2</span>
                     <span>3</span>
                     <span>-</span>
+                    <span>+</span>
                 </div>
                 
                 <div>
                     <span>0</span>
                     <span>.</span>
                     <span>%</span>
-                    <span>+</span>
-                    <span>=</span>
+                    <span class="wide_button">=</span>
                 </div>
     
             </div>
         
         </div>
-
+        <!--<h1>{{calc.textbox}} </h1>-->
     </body>
+    
+    <script>
+        $(function()
+        {
+            $("#calculator > div > span").on("click",  function ()
+            {
+            console.log("test");
+                //$(this).animate( {box-shadow: " });
+                $(this).animate({boxShadow: "0px 1px 1px 1px rgba(220,220,220, 0.4)", }, "fast");
+                $(this).animate({boxShadow: "0px 1px 1px 1px rgba(220,220,220, 0.8)", }, "fast");
+            });
+        
+        });
+        
+        var app = angular.module('app', []);
+        app.controller('calcCtrl', function()
+        {
+            var vm = this;
+            vm.textbox = "50";
+            
+            
+        });
+    </script>
     
     
 </html>
