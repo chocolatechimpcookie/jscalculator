@@ -67,12 +67,6 @@
       inset 0px 0px 15px 3px rgba(220,220,220, 0.1);
     }
 
-    .backward
-    {
-
-        font-size:35px;
-        font-weight: 900;
-    }
 
     .multi
     {
@@ -84,6 +78,13 @@
         //width:92px;
         width:184px;
         //height: 80px;
+    }
+    .backward
+    {
+
+        font-size: 65px;
+        font-weight: 900;
+        line-height: 80px ;
     }
 
 }
