@@ -43,8 +43,8 @@
 <!--You can get feedback on your project by sharing it with your friends on Facebook.-->
 
 
-
-
+<!--//issue acting on results of decimal numbers-->
+<!--it still acts on it, the calculators screen is too small to display the results and there's no way to scroll-->
 
 
     <body ng-app="app" ng-controller="calcCtrl as calc">
@@ -53,7 +53,7 @@
             <div id="calculator" >
               <!-- dir="rtl" -->
               <!-- ^doesn't work -->
-                <input class="text-right"  value="{{calc.textbox}}" readonly></input>
+                <input class="text-right"  value="{{calc.textbox}}" style="font-size:9;" readonly></input>
                 <div>
                 <!--ng-keypress="vm.textbox += '7'"-->
                     <span ng-click="calc.textbox = calc.textbox + '7'">7</span>
@@ -69,14 +69,14 @@
                     <span ng-click="calc.textbox = calc.textbox + '5'">5</span>
                     <span ng-click="calc.textbox = calc.textbox + '6'">6</span>
                     <span class="multi" ng-click="calc.pressOperator('*')">*</span>
-                    <span>/</span>
+                    <span ng-click="calc.pressOperator('/')">/</span>
                 </div>
 
                 <div>
                     <span ng-click="calc.textbox = calc.textbox + '1'">1</span>
                     <span ng-click="calc.textbox = calc.textbox + '2'">2</span>
                     <span ng-click="calc.textbox = calc.textbox + '3'">3</span>
-                    <span ng-click="calc.pressOperator('-')" style="line-height:30px;">-</span>
+                    <span ng-click="calc.pressOperator('-')" style="line-height:60px;">-</span>
                     <span ng-click="calc.pressOperator('+')">+</span>
                 </div>
 
@@ -152,6 +152,7 @@
             vm.calculate = function()
             {
               vm.textbox = eval(vm.textbox) + "";
+              console.log(typeof vm.textbox);
             };
 
         });
